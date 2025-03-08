@@ -42,8 +42,13 @@
         <label for="sessions">Ilość sesji:</label>
         <input type="number" id="sessions" min="1" value="1">
         
-        <label for="levels">Poziomy postaci (oddzielone przecinkami):</label>
-        <input type="text" id="levels" placeholder="np. 3,4,7">
+        <label>Poziomy postaci:</label>
+        <input type="number" id="level1" min="1" placeholder="Poziom 1">
+        <input type="number" id="level2" min="1" placeholder="Poziom 2">
+        <input type="number" id="level3" min="1" placeholder="Poziom 3">
+        <input type="number" id="level4" min="1" placeholder="Poziom 4">
+        <input type="number" id="level5" min="1" placeholder="Poziom 5">
+        <input type="number" id="level6" min="1" placeholder="Poziom 6">
         
         <button onclick="calculateEXP()">Oblicz EXP</button>
         
@@ -54,9 +59,16 @@
     <script>
         function calculateEXP() {
             let sessions = document.getElementById("sessions").value;
-            let levels = document.getElementById("levels").value.split(',').map(Number);
+            let levels = [
+                document.getElementById("level1").value,
+                document.getElementById("level2").value,
+                document.getElementById("level3").value,
+                document.getElementById("level4").value,
+                document.getElementById("level5").value,
+                document.getElementById("level6").value
+            ].map(Number).filter(num => num > 0);
             
-            if (sessions < 1 || levels.length === 0 || levels.includes(NaN)) {
+            if (sessions < 1 || levels.length === 0) {
                 document.getElementById("result").innerText = "Wprowadź poprawne dane!";
                 return;
             }
