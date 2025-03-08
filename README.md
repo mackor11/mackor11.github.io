@@ -54,6 +54,8 @@
         
         <h3>Wynik:</h3>
         <p id="result">---</p>
+        <h3>EXP dla każdego gracza:</h3>
+        <ul id="playerExp"></ul>
     </div>
     
     <script>
@@ -70,14 +72,25 @@
             
             if (sessions < 1 || levels.length === 0) {
                 document.getElementById("result").innerText = "Wprowadź poprawne dane!";
+                document.getElementById("playerExp").innerHTML = "";
                 return;
             }
             
             let sumLevels = levels.reduce((a, b) => a + b, 0);
             let avgLevel = sumLevels / levels.length;
-            let exp = (2351.936228 * sessions) / avgLevel;
+            let totalExp = (2351.936228 * sessions) / avgLevel;
             
-            document.getElementById("result").innerText = `EXP dla graczy: ${exp.toFixed(2)}`;
+            document.getElementById("result").innerText = `Łączne EXP: ${totalExp.toFixed(2)}`;
+            
+            let playerExpList = document.getElementById("playerExp");
+            playerExpList.innerHTML = "";
+            
+            levels.forEach((level, index) => {
+                let playerExp = totalExp * (level / sumLevels);
+                let listItem = document.createElement("li");
+                listItem.innerText = `Gracz ${index + 1} (Poziom ${level}): ${playerExp.toFixed(2)} EXP`;
+                playerExpList.appendChild(listItem);
+            });
         }
     </script>
 </body>
