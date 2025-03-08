@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator EXP</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Kalkulator Przydzielania EXP</h1>
+        
+        <label for="numPlayers">Ilość graczy:</label>
+        <input type="number" id="numPlayers" name="numPlayers" min="1" required>
+        
+        <label for="gameCount">Ilość rozegranych gier:</label>
+        <input type="number" id="gameCount" name="gameCount" min="1" required>
+        
+        <label for="playerLevels">Poziomy graczy (oddzielone przecinkiem):</label>
+        <input type="text" id="playerLevels" name="playerLevels" required>
+        
+        <button onclick="calculateEXP()">Oblicz EXP</button>
+        
+        <h2>Wyniki:</h2>
+        <p id="result"></p>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
